@@ -56,18 +56,144 @@ Pensado para entornos operativos donde se necesita **trazabilidad**, **agilidad*
 ### 1. Clonar el repositorio
 ```bash
 git clone https://github.com/afgsanchez/BudgetPilot.git
+```
+```bash
 cd BudgetPilot
 ```
 ### 2. Crear entorno virtual
+```bash
 python -m venv .venv
+```
 ### Windows
+```bash
 .venv\Scripts\activate
+```
 ### Linux/macOS
+```bash
 source .venv/bin/activate
+```
 
 ### 3. Instalar dependencias
+```bash
 pip install -r requirements.txt
+```
 
 ### ▶️ Uso
 Ejecuta la aplicación desde la raíz del proyecto:
+```bash
 python src/budgetpilot/app.py
+```
+(Dependiendo de tu configuración, también puede ser:)
+```bash
+python -m budgetpilot
+```
+⌨️ Atajos del teclado (TUI)
+
+Pantalla principal:
+
+N → Nuevo presupuesto
+
+S → Cambiar estado
+
+F → Adjuntos
+
+T → Ver atascados
+
+C → Ver cerrados
+
+R → Recargar
+
+Enter → Ver detalle
+
+Q → Salir
+
+
+En el detalle:
+
+S → Cambiar estado
+
+F → Adjuntos
+
+E → Exportar
+
+R → Refrescar
+
+Esc → Volver
+
+
+
+📦 Exportación
+Al exportar un presupuesto se genera una carpeta con estructura:
+```bash
+exports/BP_000123_20260201_153108_Vendor_Titulo/
+├── resumen.txt
+└── attachments/
+    ├── archivo1.pdf 
+    ├── archivo2.png
+    └── ...
+```
+
+resumen.txt incluye:
+
+Datos clave
+
+Histórico de estados (con notas)
+
+Lista detallada de adjuntos
+
+
+
+🗂️ Estructura del Proyecto
+```bash
+src/budgetpilot/
+├── ui/
+│   └── tui.py             # Interfaz TUI (Textual)
+├── services/
+│   ├── budgets.py         # Lógica de presupuestos + histórico
+│   ├── attachments.py     # Adjuntos
+│   └── exporter.py        # Exportación TXT + archivos
+├── utils/
+│   ├── openfile.py
+│   ├── paths.py
+│   └── hashing.py
+├── config.py              # Configuración general
+├── db.py                  # Conexión SQLite
+└── app.py                 # Punto de entrada
+data/
+├── budgetpilot.db         # Base de datos
+├── attachments/           # Archivos ligados a presupuestos
+└── exports/               # Exportaciones generadas
+```
+
+💡 Estados definidos
+Los estados disponibles están en config.py
+y pueden personalizarse fácilmente modificando la lista STATUSES.
+
+🛣️ Roadmap (próximas mejoras):
+```bash
+   Búsqueda por proveedor, número o notas
+   Exportación a CSV / Excel
+   Campos adicionales (prioridad, departamento, fecha objetivo)
+   Módulo CLI para automatizar tareas
+   Tests unitarios
+   ```
+
+
+🤝 Contribuir
+¡Las contribuciones son bienvenidas!
+```bash
+Haz un fork
+Crea tu rama: git checkout -b feature/nueva-funcion
+Commit: git commit -m "Añadir nueva función"
+Push: git push origin feature/nueva-funcion
+Abre un Pull Request
+```
+
+📄 Licencia
+Este proyecto está bajo licencia MIT.
+Puedes consultarla en el archivo LICENSE.
+
+🙌 Agradecimientos
+
+Hecho con ❤ utilizando Textual
+y diseñado para un uso real en operaciones y mantenimiento.
