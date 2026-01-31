@@ -1,0 +1,7 @@
+Metadata-Version: 2.4
+Name: budgetpilot
+Version: 0.1.0
+Summary: Gestor de presupuestos TUI en terminal
+Requires-Python: >=3.10
+Requires-Dist: textual>=0.50
+Requires-Dist: rich>=13.0
